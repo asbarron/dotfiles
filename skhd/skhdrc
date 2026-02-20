@@ -1,0 +1,34 @@
+# skhd — hotkey daemon for yabai + ymsp
+# Restart after changes: skhd --restart-service
+
+# App launchers
+# Open Ghostty term
+cmd - return : open -na /Applications/Ghostty.app
+
+# Open Brave browser
+cmd + shift - return : open -na "Brave Browser"
+
+# Open Spotify
+cmd - m : open -na Spotify
+
+# YMSP: master-stack focus & layout (alt + j/k, alt+shift i/d) 
+# Focus the window above/below in the stack (vim-style: k=up, j=down)
+alt - j : ymsp focus-down-window
+alt - k : ymsp focus-up-window
+
+# Increase/decrease how many windows sit in the "master" (main) area.
+# More master = more windows share the main zone; fewer = one big main window.
+# Only has a visible effect when you have 3+ windows.
+alt + shift - i : ymsp increase-master-window-count
+alt + shift - d : ymsp decrease-master-window-count
+
+# Optional: close focused window via ymsp (uncomment to use).
+# alt - q : ymsp close-focused-window
+
+# Window resize (alt + shift + h/j/k/l)
+# Resize the focused window by 50px in the given direction.
+# Change 50 to a different number for bigger/smaller steps.
+alt + shift - h : yabai -m window --resize left:-50
+alt + shift - j : yabai -m window --resize down:50
+alt + shift - k : yabai -m window --resize up:-50
+alt + shift - l : yabai -m window --resize right:50
