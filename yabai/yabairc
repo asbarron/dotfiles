@@ -1,23 +1,31 @@
 #!/usr/bin/env sh
-sudo yabai --load-sa
-yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+# Yabai + YMSP (yabai-master-stack-plugin) config
+# Restart yabai after changes: yabai --restart-service (or sudo yabai --restart-service)
+sudo yabai
 
+# bsp = binary space partition (default); ymsp overrides with master-stack via signals below
 yabai -m config layout bsp
 yabai -m config window_placement first_child
 yabai -m config window_topmost on
 yabai -m config mouse_modifier fn
 
+# Apps that yabai should not manage (float / ignore) 
+yabai -m config rule "app='System Settings' manage=off"
+yabai -m config rule "app='Notion Calendar' manage=off"
+
+# Window appearance 
 yabai -m config window_shadow float
 yabai -m config window_opacity on
 yabai -m config active_window_opacity 0.9
 yabai -m config normal_window_opacity 0.8
 yabai -m config menubar_opacity 0.5
 
-#ysm
-yabai -m signal --add event=window_created action="ymsp window_created"
-yabai -m signal --add event=application_launched action="ymsp window-created"
-ymsp on-yabai-startup
+# YMSP: master-stack layout
+# When a new window is created or an app launches, ymsp repositions it into master/stack
+yabai -m signal --add event=window_created action='ymsp window-created'
+yabai -m signal --add event=application_launched action='ymsp window-created
 
-yabai -m config rule "app='System Settings' manage=off"
+# Apply master-stack layout when yabai starts (use "on-yabai-start", not startup)
+ymsp on-yabai-start
 
-echo "profile: A♥a"                                                                                       
+echo "profile: A♥ a"
