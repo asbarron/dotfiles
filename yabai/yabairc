@@ -23,7 +23,7 @@ yabai -m config menubar_opacity 0.5
 # YMSP: master-stack layout
 # When a new window is created or an app launches, ymsp repositions it into master/stack
 yabai -m signal --add event=window_created action='ymsp window-created'
-yabai -m signal --add event=application_launched action='ymsp window-created
+yabai -m signal --add event=application_launched action='ymsp window-created'
 
 # Apply master-stack layout when yabai starts (use "on-yabai-start", not startup)
 ymsp on-yabai-start
