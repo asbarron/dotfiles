@@ -1,0 +1,27 @@
+# Font
+font-family = Hack Nerd Font Mono
+font-thicken = true
+
+# Top bar
+title = "🌸 aloha"
+macos-titlebar-proxy-icon = hidden
+macos-titlebar-style = tabs
+# Theme
+theme = Dracula
+background = #2d1b4e
+
+# Transparent background (0.0 = fully transparent, 1.0 = fully opaque)
+background-opacity = 0.9
+
+# Background blur
+background-blur-radius = 5 
+
+# Cursor style (block, bar, underline)
+cursor-style = block
+cursor-style-blink = false
+
+# Prevent shell from overriding cursor style
+shell-integration-features = no-cursor
+
+# Use widely-supported TERM for SSH compatibility
+term = xterm-256color
