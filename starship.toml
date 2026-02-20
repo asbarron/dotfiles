@@ -1,0 +1,150 @@
+# Starship prompt styled like Fish with Dracula colors
+# Format: ➜ directory git:(branch) ✗
+
+format = """
+$status\
+$character\
+$directory\
+$git_branch\
+$git_status\
+$git_metrics\
+$line_break\
+"""
+
+# Disable the blank line at the start
+add_newline = false
+
+[character]
+success_symbol = "[➜](bold #50fa7b)"
+error_symbol = "[✗](bold #ff5555)"
+vimcmd_symbol = "[❮](bold #50fa7b)"
+
+[status]
+disabled = false
+format = ""
+
+[directory]
+style = "bold #8be9fd"
+format = "[$path]($style) "
+truncation_length = 1
+truncate_to_repo = false
+truncation_symbol = ""
+
+[git_branch]
+symbol = "  "
+style = "bold #ff79c6"
+format = "[$symbol](bold #bd93f9)[\\(](bold #bd93f9)[$branch]($style)[\\)](bold #bd93f9)"
+
+[git_status]
+style = "bold #f1fa8c"
+format = "([$all_status$ahead_behind]($style) )"
+conflicted = ""
+ahead = "⇡${count}"
+behind = "⇣${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+untracked = ""
+stashed = " "
+modified = ""
+staged = "+"
+renamed = "»"
+deleted = "󰧧"
+
+[git_metrics]
+format = "([+$added]($added_style))[]($added_style)"
+added_style = "fg:#1C3A5E bg:#FCF392"
+deleted_style = "fg:bright-red bg:235"
+disabled = false
+
+# Disable other modules for clean prompt
+[username]
+disabled = true
+
+[hostname]
+ssh_only = true
+format = "[$hostname]($style)"
+trim_at = "-"
+style = "bold dimmed white"
+disabled = false
+
+[time]
+disabled = true
+
+[buf]
+symbol = ' '
+format = '( [$symbol($version)]($style))'
+disabled = false
+
+[cmd_duration]
+disabled = true
+
+[docker_context]
+symbol = ' '
+format = '( [$symbol$context]($style))'
+disabled = true
+
+[package]
+disabled = true
+
+[nodejs]
+disabled = true
+
+[python]
+disabled = true
+
+[rust]
+disabled = true
+
+[golang]
+symbol = ' '
+format = '( [$symbol$version]($style))'
+disabled = false
+
+[java]
+disabled = true
+
+[c]
+disabled = true
+
+[elixir]
+disabled = true
+
+[elm]
+disabled = true
+
+[haskell]
+disabled = true
+
+[julia]
+disabled = true
+
+[nim]
+disabled = true
+
+[scala]
+disabled = true
+
+[aws]
+symbol = ' '
+format = '( [$symbol($profile)( \($region\))( \[$duration\])]($style))'
+disabled = true
+
+[lua]
+symbol = ' '
+format = '( [$symbol$version]($style))'
+disabled = false
+
+[kubernetes]
+disabled = false
+symbol = ""
+format = '[$symbol](bright-black) [$context( \($namespace\))]($style)'
+
+[[kubernetes.contexts]]
+context_pattern = "^production$"
+context_alias = "production"
+style = "green"
+
+[shell]
+elvish_indicator = ' esh'
+tcsh_indicator = ' tsh'
+format = '[$indicator]($style)'
+disabled = true
